@@ -35,7 +35,8 @@ public class Main {
     }
     public static int numberOfWords(String text) {
         String[] words = text.split(" ");
-
+        for (int i=0; i<words.length; i++)
+            System.out.println(words[i]);
         return words.length;
     }
 
@@ -44,10 +45,10 @@ public class Main {
         HashMap<String, Integer> d = new HashMap<>();
         Integer counter;
         for (int i = 0; i < words.length; i++) {
-            if (! d.containsKey((words[i]))) {
+            if (! d.containsKey((words))) {
                 counter = 1;
                 for (int j = 0; j < words.length; j++) {
-                    if (words[i].equals(words[j]))
+                    if (words[i].equals(words[j]) && i!=j)
                         counter++;
                     System.out.println(counter);
                     d.put(words[i], counter);
