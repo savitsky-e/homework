@@ -28,15 +28,13 @@ public class Main {
         String s = "";
         Scanner in = new Scanner(new File("d:\\1.txt"));
         while (in.hasNext())
-        s += in.nextLine() + "\r\n";
+            s += in.nextLine() + "\r\n";
         in.close();
-        s = s.replace(",","").replace(".","").replace("\n", "").replace("  ", " ").replace("?", "").replace("!", "");
+        s = s.replace(",","").replace(".","").replace("\n", "").replace("\r", "").replace("  ", " ").replace("?", "").replace("!", "");
         return s.toLowerCase();
     }
     public static int numberOfWords(String text) {
         String[] words = text.split(" ");
-        for (int i=0; i<words.length; i++)
-            System.out.println(words[i]);
         return words.length;
     }
 
@@ -45,16 +43,13 @@ public class Main {
         HashMap<String, Integer> d = new HashMap<>();
         Integer counter;
         for (int i = 0; i < words.length; i++) {
-            if (! d.containsKey((words))) {
+            if (! d.containsKey(words[i])) {
                 counter = 1;
-                for (int j = 0; j < words.length; j++) {
-                    if (words[i].equals(words[j]) && i!=j)
-                        counter++;
-                    System.out.println(counter);
-                    d.put(words[i], counter);
-                    }
-                }
+                d.put(words[i], counter);
+            } else {
+                d.put(words[i], d.get(words[i]) + 1);
             }
+        }
 
 
 
@@ -68,7 +63,7 @@ public class Main {
 
 
 
-    }
+}
 
 
 
